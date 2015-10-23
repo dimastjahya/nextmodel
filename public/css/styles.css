@@ -82,7 +82,7 @@ h3.highlight  {
 }
 
 .navbar {
-	background-color:#77CCDD;
+	background-color:#000;
   	color:#ffffff;
   	border-radius:0;
 }
@@ -206,4 +206,8 @@ footer {
   }
 }
 
+.register_form
+{
+   width: 500px; 
+}
 /* end custom theme */

@@ -17,41 +17,53 @@
 <nav class="navbar navbar-static">
    <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="http://www.bootply.com" target="ext"><b>NEXT MODEL</b></a>
-      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="glyphicon glyphicon-chevron-down"></span>
-      </a>
+        <div class="navbar-brand"><img src="<?php echo asset('images/NEXTmodels.jpg') ?>"></div>
     </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">  
-          
-        </ul>
-        <ul class="nav navbar-right navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
-            <ul class="dropdown-menu" style="padding:12px;">
-                <form class="form-inline">
-     				<button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
-                </form>
-             </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Profile</a></li>
-              <li class="divider"></li>
-              <li><a href="#">About</a></li>
-             </ul>
-          </li>
-        </ul>
-      </div>
+    <!-- DROPDOWN LOGIN STARTS HERE  -->
+    <ul id="signInDropdown" class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-default navbar-btn dropdown-toggle"><i class="glyphicon glyphicon-user color-blue"></i> Login <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li>
+          <form class="navbar-form form" role="form" method="POST" action="/auth/login">
+          {!! csrf_field() !!}
+            <div class="form-group">
+              <div class="input-group">
+              	<span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                <!--EMAIL ADDRESS-->
+                <input id="emailInput" placeholder="email address" class="form-control" type="email" oninvalid="setCustomValidity('Please enter a valid email address!')" onchange="try{setCustomValidity('')}catch(e){}" required="" name="email" value="{{ old('email') }}">
+              </div>
+            </div>    <br><br>     
+            <div class="form-group">
+              <div class="input-group">
+              	<span class="input-group-addon"><i class="glyphicon glyphicon-lock color-blue"></i></span>
+                <!--PASSWORD--> 
+              	<input id="passwordInput" placeholder="password" class="form-control" type="password" oninvalid="setCustomValidity('Please enter a password!')" onchange="try{setCustomValidity('')}catch(e){}" required="" name="password">
+              </div>
+            </div>
+            <!--  BASIC ERROR MESSAGE-->
+            <div class="form-group">
+            	<label class="error-message color-red">*Email &amp; password don't match!</label>
+            </div>
+           
+            <div class="form-group">
+              <!--BUTTON--> 
+              <button type="submit" class="btn btn-primary form-control">Login</button></div>
+            <div class="form-group">
+              <!--RESET PASSWORD LINK-->
+              <span class="pull-right"><a href="#">Forgot Password?</a></span></div>
+          </form>
+        </li>
+      </ul>
+      </li>
+    </ul>
+    <!-- DROPDOWN LOGIN ENDS HERE  -->
     </div>
 </nav><!-- /.navbar -->
 
 <div class="container">
-    <div class="col-md-12">
-         <h1>The Next Models</h1>
+    <div class="col-md-12"><br><br>
+       <br>
 
         <div class="well">
             <div id="myCarousel" class="carousel slide">
@@ -114,39 +126,11 @@
 <div id="background"></div>
 
 <div class="container">
+
   <div id="login-wrapper" class="card card-default">
-    
-    <div class="card-block">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a href="#login" class="nav-link text-success active" role="tab" data-toggle="tab">Login</a>
-        </li>
-        <li class="nav-item">
-          <a href="#register" class="nav-link" role="tab" data-toggle="tab">Register</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <br>
-        <div role="tabpanel" class="tab-pane active fade in" id="login">
-          <form method="POST" action="/auth/login">
-          {!! csrf_field() !!}
-            <div class="clearfix"></div>
-            <fieldset class="form-group">
-              <input type="text" class="form-control" id="username" placeholder="Username/Email" name="email" value="{{ old('email') }}">
-            </fieldset>
-            <fieldset class="form-group">
-              <input type="password" class="form-control" id="password" placeholder="Password" name="password" >
-            </fieldset>
-            <button class="btn btn-primary pull-right" type="submit">Login!</button>
-          </form>
-          <a href="#" class="pull-left text-info">Reset Password</a>
-          <br>
-          <a href="#" class="pull-left text-danger">Delete my account</a>
-          <div class="clearfix"></div>
-        </div>
-        
-        <div role="tabpanel" class="tab-pane fade" id="register">
-           <form method="POST" action="/auth/register">
+       <h3>Register</h3>
+
+           <form method="POST" class="register_form" action="/auth/register">
           {!! csrf_field() !!}
             <div class="clearfix"></div>
             <fieldset class="form-group">
@@ -169,17 +153,17 @@
 			<label class="btn btn-default">
 				<input name="tipe" value="model"  type="radio">Model
 			</label>
-        </div>
+        
         	</fieldset>
             <button class="btn btn-primary pull-right" type="submit">Register</button>
           </form>
+           
           <div class="clearfix"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
+  </div>
+ 
+</div>
+ 
 
 <footer>
   <div class="container">

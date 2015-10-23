@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Profile;
+use App\User;
 class profileController extends Controller
 {
     /**
@@ -58,9 +59,12 @@ class profileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
-        //
+        $user = user::findOrFail($id);
+        $profile  = profile::where('id_model','=', $id)->get();
+        return view('profile_view',compact('user','profile'));
+    
     }
 
     /**

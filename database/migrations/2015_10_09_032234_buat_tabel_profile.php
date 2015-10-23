@@ -14,6 +14,15 @@ class BuatTabelProfile extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('fullname');
+            $table->string('location');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('model');
+            $table->string('category');
+            $table->string('weight');
+            $table->string('height');
+            $table->string('photo');
             $table->timestamps();
         });
     }
